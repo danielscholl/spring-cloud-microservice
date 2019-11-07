@@ -2,7 +2,7 @@
 
 ### Create Environment File
 
-Create an environment setting file in the root directory ie: `.env.ps1` or `.envrc`
+Create an environment setting file in the root directory and microservice directories ie:  `.envrc`
 
 Default Environment Settings
 
