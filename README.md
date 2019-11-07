@@ -1,4 +1,4 @@
-# Spring Cloud Microservice
+# Spring Cloud Microservices
 
 ### Create Environment File
 
@@ -30,7 +30,7 @@ APP_NAME="simple-service"
 # Generate a new Spring Microservice
 curl https://start.spring.io/starter.tgz \
   -d dependencies=web \
-  -d baseDir=spring-cloud-microservice \
+  -d baseDir=simple-service \
   -d bootVersion=2.1.9.RELEASE | tar -xzvf -
 
 # Create a Spring Cloud Instance
