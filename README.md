@@ -16,20 +16,8 @@ Default Environment Settings
 
 ### Provision Infrastruture and Deploy Microservice
 
->Note:  This can be performed via Portal UI or CloudShell (Bash/Powershell)
-
-__Provision using Bash__
-
 The Spring Cloud CLI extension must be added to your CLI
 `az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl`
-
-```bash
-./install.sh
-```
-
-__Provision using Portal__
-
-TODO:// Create ARM Template
 
 __Manual Provision using CLI__
 
@@ -37,7 +25,7 @@ __Manual Provision using CLI__
 RESOURCE_GROUP="<your_resource_group>"
 LOCATION="westus2"
 INSTANCE_NAME="<your_unique_name>"
-APP_NAME="<your_app_name>"
+APP_NAME="simple-service"
 
 # Generate a new Spring Microservice
 curl https://start.spring.io/starter.tgz \
@@ -59,4 +47,18 @@ az spring-cloud app create -n $APP_NAME -s $INSTANCE_NAME \
 ./mvnw clean package
 az spring-cloud app deploy --name $APP_NAME --service $INSTANCE_NAME --resource-group $RESOURCE_GROUP \
   --jar-path target/demo-0.0.1-SNAPSHOT.jar
+```
+
+
+__Provision using Scripts__
+
+```bash
+./provision.sh
+```
+
+__Deploy using Scripts__
+
+```bash
+cd simple-service
+./deploy.sh
 ```

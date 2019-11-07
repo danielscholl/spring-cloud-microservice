@@ -2,5 +2,3 @@
 -------------------------
 export ARM_SUBSCRIPTION_ID=""
 export AZURE_LOCATION="westus2"
-export ARTIFACT="demo"
-export VERSION="0.0.1-SNAPSHOT"
