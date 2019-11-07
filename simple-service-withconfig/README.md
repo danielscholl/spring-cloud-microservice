@@ -1,6 +1,6 @@
 # Getting Started
 
-__Scaffold Command__
+__Initial Scaffold Command__
 
 ```bash
 curl https://start.spring.io/starter.tgz \
@@ -10,7 +10,7 @@ curl https://start.spring.io/starter.tgz \
 | tar -xzvf -
 ```
 
-__Run the Project__
+__Run the App Locally__
 
 ```bash
 ./mvnw spring-boot:run
@@ -19,17 +19,17 @@ curl http://127.0.0.1:8080/hello
    Not configured by a Spring Cloud Server
 ```
 
-### Reference Documentation
-For further reference, please consider the following sections:
+__Deploy the Microservice__
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.1.9.RELEASE/maven-plugin/)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.2.1.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
+```bash
+./deploy.sh
+curl https://<spring_cloud_name>-simple-service-withconfig.azuremicroservices.io/hello
+# Reponse
+   Configured by Azure Spring Cloud
+```
 
-### Guides
-The following guides illustrate how to use some features concretely:
+__Remove the Microservice__
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-
+```bash
+./remove.sh
+```

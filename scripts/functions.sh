@@ -126,6 +126,28 @@ function CreateSpringCloudApp() {
       tput setaf 3;  echo "Spring Cloud App $1 already exists."; tput sgr0
     fi
 
-  local _url=$(az spring-cloud app show --name $1 --service $2 --resource-group $3 --query properties.url)
+  local _url=$(az spring-cloud app show --name $1 --service $2 --resource-group $3 --query properties.url -otsv)
   echo ${_url}
+}
+
+function GetSpringCloudApp() {
+  # Required Argument $1 = APP_NAME
+  # Required Argument $2 = INSTANCE_NAME
+  # Required Argument $3 = RESOURCE_GROUP
+
+  if [ -z $1 ]; then
+    tput setaf 1; echo 'ERROR: Argument $1 (APP_NAME) not received'; tput sgr0
+    exit 1;
+  fi
+  if [ -z $1 ]; then
+    tput setaf 1; echo 'ERROR: Argument $2 (INSTANCE_NAME) not received'; tput sgr0
+    exit 1;
+  fi
+  if [ -z $3 ]; then
+    tput setaf 1; echo 'ERROR: Argument $3 (RESOURCE_GROUP) not received'; tput sgr0
+    exit 1;
+  fi
+
+  local _springcloudapp=$(az spring-cloud app show --name $1 --service $2 --resource-group $3 --query name -otsv)
+  echo ${_springcloudapp}
 }
