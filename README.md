@@ -1,5 +1,8 @@
 # Spring Cloud Microservices
 
+This repository is based from the [azure-spring-cloud-training](https://github.com/microsoft/azure-spring-cloud-training/) workshop.
+
+
 ### Create Environment File
 
 Create an environment setting file in the root directory and microservice directories ie:  `.envrc`
