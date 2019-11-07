@@ -16,8 +16,13 @@ Default Environment Settings
 
 ### Provision Infrastruture and Deploy Microservice
 
-The Spring Cloud CLI extension must be added to your CLI
-`az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl`
+>Note: The Spring Cloud CLI extension must be added to your CLI
+
+```bash
+az extension add -y \
+  --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+```
+
 
 __Manual Provision using CLI__
 
