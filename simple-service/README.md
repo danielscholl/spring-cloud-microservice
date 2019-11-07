@@ -16,7 +16,7 @@ __Run the App Locally__
 ./mvnw spring-boot:run
 curl http://127.0.0.1:8080/hello
 # Reponse
-   Hello from Azure Spring Cloud
+   Hello World!
 ```
 
 __Deploy the Microservice__
@@ -25,7 +25,7 @@ __Deploy the Microservice__
 ./deploy.sh
 curl https://<spring_cloud_name>-simple-service.azuremicroservices.io
 # Reponse
-   Hello from Azure Spring Cloud
+   Hello World!
 ```
 
 __Remove the Microservice__

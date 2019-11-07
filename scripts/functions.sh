@@ -151,3 +151,38 @@ function GetSpringCloudApp() {
   local _springcloudapp=$(az spring-cloud app show --name $1 --service $2 --resource-group $3 --query name -otsv)
   echo ${_springcloudapp}
 }
+
+function GetSpringCloud() {
+  # Required Argument $1 = RESOURCE_GROUP
+
+  if [ -z $1 ]; then
+    tput setaf 1; echo 'ERROR: Argument $1 (RESOURCE_GROUP) not received' ; tput sgr0
+    exit 1;
+  fi
+
+  local _cosmosdb=$(az cosmosdb list --resource-group $1 --query [].name -otsv)
+  echo ${_cosmosdb}
+}
+
+function CreateCosmosDb() {
+  # Required Argument $1 = APP_NAME
+  # Required Argument $2 = RESOURCE_GROUP
+
+  if [ -z $1 ]; then
+    tput setaf 1; echo 'ERROR: Argument $1 (APP_NAME) not received'; tput sgr0
+    exit 1;
+  fi
+  if [ -z $2 ]; then
+    tput setaf 1; echo 'ERROR: Argument $2 (RESOURCE_GROUP) not received'; tput sgr0
+    exit 1;
+  fi
+
+
+  local _result=$(az cosmosdb show --name $1 --resource-group $2 --query name)
+  if [ "$_result"  == "" ]
+    then
+      az cosmosdb create --name $1 --resource-group $2 --query name -otsv
+    else
+      tput setaf 3;  echo "CosmosDb $1 already exists."; tput sgr0
+    fi
+}

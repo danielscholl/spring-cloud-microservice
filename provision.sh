@@ -56,3 +56,7 @@ CreateResourceGroup $RESOURCE_GROUP $AZURE_LOCATION
 tput setaf 2; echo 'Creating the Spring Cloud App...' ; tput sgr0
 SPRING_CLOUD_INSTANCE="springcloud$UNIQUE"
 CreateSpringCloud $SPRING_CLOUD_INSTANCE $RESOURCE_GROUP $AZURE_LOCATION
+
+tput setaf 2; echo 'Creating the Cosmos Database...' ; tput sgr0
+SPRING_CLOUD_INSTANCE="cosmosdb$UNIQUE"
+CreateCosmosDb $SPRING_CLOUD_INSTANCE $RESOURCE_GROUP
