@@ -1,0 +1,14 @@
+{
+  "name": "spring-cloud-microservice",
+  "runArgs": [
+    "-u",
+    "vscode"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "vscjava.vscode-java-pack",
+    "redhat.vscode-xml"
+  ]
+}
