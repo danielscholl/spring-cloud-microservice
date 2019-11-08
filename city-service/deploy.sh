@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 #
-#  Purpose: Remove a Microservice from Spring Cloud
+#  Purpose: Deploy a Microservice to Spring Cloud
 #  Usage:
-#    remove.sh
+#    deploy.sh
+
+
 ###############################
 ## ARGUMENT INPUT            ##
 ###############################
@@ -26,6 +28,7 @@ if [ -z $PREFIX ]; then
   PREFIX="osdu"
 fi
 
+
 ###############################
 ## Azure Intialize           ##
 ###############################
@@ -43,15 +46,20 @@ tput setaf 2; echo "Gathering information for Spring Cloud..." ; tput sgr0
 SPRING_CLOUD_INSTANCE=$(GetSpringCloud $RESOURCE_GROUP)
 echo $SPRING_CLOUD_INSTANCE
 
-tput setaf 2; echo "Getting Spring Cloud App..." ; tput sgr0
+tput setaf 2; echo "Creating Spring Cloud App..." ; tput sgr0
 SPRING_CLOUD_APP=${PWD##*/}
-GetSpringCloudApp $SPRING_CLOUD_APP $SPRING_CLOUD_INSTANCE $RESOURCE_GROUP
+JAR_FILE="$ARTIFACT-$VERSION.jar"
+CreateSpringCloudApp $SPRING_CLOUD_APP $SPRING_CLOUD_INSTANCE $RESOURCE_GROUP
+
+tput setaf 2; echo 'Packaging the Spring Cloud App...' ; tput sgr0
+./mvnw clean package -DskipTests -Pcloud
 
 tput setaf 2; echo 'Deploying the Spring Cloud App...' ; tput sgr0
-az spring-cloud app delete \
+az spring-cloud app deploy \
   --name $SPRING_CLOUD_APP \
   --service $SPRING_CLOUD_INSTANCE \
-  --resource-group $RESOURCE_GROUP -ojsonc
+  --resource-group $RESOURCE_GROUP \
+  --jar-path target/$JAR_FILE -ojsonc
 
 tput setaf 2; echo 'Cleaning up the resources...' ; tput sgr0
 ./mvnw clean

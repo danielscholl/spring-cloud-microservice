@@ -19,6 +19,16 @@ curl http://127.0.0.1:8080/hello
    Not configured by a Spring Cloud Server
 ```
 
+__Configure the Config Server__
+
+This application uses Spring Cloud Config Server which is configured to point to a private git repository hosting the following file.
+
+_application.yaml_
+```yaml
+application:
+    name: Azure Spring Cloud
+```
+
 __Deploy the Microservice__
 
 ```bash

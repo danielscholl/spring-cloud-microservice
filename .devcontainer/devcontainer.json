@@ -1,5 +1,5 @@
 {
-  "name": "Java Sample",
+  "name": "spring-cloud-microservice",
   "dockerFile": "Dockerfile",
   // Comment out the next line to run as root instead. Linux users,
   // update Dockerfile with your user's UID/GID if not 1000.

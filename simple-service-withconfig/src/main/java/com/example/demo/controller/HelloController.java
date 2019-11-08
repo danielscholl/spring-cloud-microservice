@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-  @Value("${application.message:Not configured by a Spring Cloud Server}")
-  private String message;
+  @Value("${application.name:World}")
+  private String name;
 
   @GetMapping("/hello")
   public String hello() {
-    return message;
+    return String.format("Hello %s!", name);
   }
 }

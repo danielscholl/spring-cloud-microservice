@@ -12,7 +12,7 @@
 usage() { echo "Usage: install.sh " 1>&2; exit 1; }
 
 if [ -f ./.envrc ]; then source ./.envrc; fi
-if [ -f ../scripts/functions.sh ]; then source ../scripts/functions.sh; fi
+if [ -f ../functions.sh ]; then source ../functions.sh; fi
 
 if [ ! -z $1 ]; then PROJECT_INITIALS=$1; fi
 if [ -z $PROJECT_INITIALS ]; then

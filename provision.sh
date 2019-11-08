@@ -13,7 +13,7 @@
 usage() { echo "Usage: install.sh " 1>&2; exit 1; }
 
 if [ -f ./.envrc ]; then source ./.envrc; fi
-if [ -f ./scripts/functions.sh ]; then source ./scripts/functions.sh; fi
+if [ -f ./functions.sh ]; then source ./functions.sh; fi
 
 if [ ! -z $1 ]; then PROJECT_INITIALS=$1; fi
 if [ -z $PROJECT_INITIALS ]; then
@@ -48,6 +48,7 @@ az account set --subscription ${ARM_SUBSCRIPTION_ID}
 
 tput setaf 2; echo 'Registering Resource Provider...' ; tput sgr0
 ResourceProvider Microsoft.AppPlatform
+ResourceProvider Microsoft.DocumentDB
 
 tput setaf 2; echo 'Creating the Resource Group...' ; tput sgr0
 RESOURCE_GROUP="$PREFIX-resources"
@@ -58,5 +59,8 @@ SPRING_CLOUD_INSTANCE="springcloud$UNIQUE"
 CreateSpringCloud $SPRING_CLOUD_INSTANCE $RESOURCE_GROUP $AZURE_LOCATION
 
 tput setaf 2; echo 'Creating the Cosmos Database...' ; tput sgr0
-SPRING_CLOUD_INSTANCE="cosmosdb$UNIQUE"
-CreateCosmosDb $SPRING_CLOUD_INSTANCE $RESOURCE_GROUP
+DB_INSTANCE="cosmosdb$UNIQUE"
+DB_NAME="${PWD##*/}"
+DB_COLLECTION="city"
+DB_PARTION_KEY="/name"
+CreateCosmosDb $DB_INSTANCE $DB_NAME $DB_COLLECTION $DB_PARTION_KEY $RESOURCE_GROUP
